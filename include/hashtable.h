@@ -7,11 +7,21 @@
 
 typedef struct Node
 {
+
     char *name;
     char *value;
     struct Node *next;
 } Node;
 
+typedef struct HashTable
+{
+
+    Node **buckets;
+    int capacity;
+} HashTable;
+
 unsigned int hash(char *name);
+
+void insert(HashTable *table, char *name, char *value);
 
 #endif
