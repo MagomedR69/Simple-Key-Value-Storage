@@ -12,3 +12,21 @@ unsigned int hash(char *name)
 
     return hash_value % TABLE_SIZE;
 }
+
+void insert(HashTable *table, char *name, char *value)
+{
+    unsigned int index = hash(name);
+
+    Node *new_node = malloc(sizeof(Node));
+
+    if (new_node == NULL)
+    {
+        return 1;
+    }
+
+    new_node->name = name;
+    new_node->value = value;
+
+    new_node->next = table->buckets[index];
+    table->buckets[index] = new_node;
+}
